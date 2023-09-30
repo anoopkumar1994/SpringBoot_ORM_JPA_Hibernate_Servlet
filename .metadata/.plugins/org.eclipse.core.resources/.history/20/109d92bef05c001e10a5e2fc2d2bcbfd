@@ -1,0 +1,82 @@
+package com.customer.relationship.manager.model;
+
+import java.util.UUID;
+
+import org.hibernate.annotations.GenericGenerator;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+//import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
+@Entity
+@Table(name = "CustomerRelationshipManager")
+public class CustomerRelationshipModel {
+
+	@Id
+//	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(generator = "uuid2")
+	@GenericGenerator(name = "uuid2", strategy = "uuid2")
+	@Column(name = "id", columnDefinition = "BINARY(16)")
+	private UUID id;
+	
+	@Column(name = "First name", nullable = false)
+	@NotBlank(message = "First name is required")
+	@Size(min = 2, max = 50, message = "First name must be between 2 and 50 characters")
+	private String firstName;
+	
+	@Column(name = "Last name", nullable = false)
+	@NotBlank(message = "First name is required")
+	@Size(min = 2, max = 50, message = "First name must be between 2 and 50 characters")
+	private String lastName;
+	
+	@Column(name = "Email", nullable = false)
+	private String email;
+
+
+	
+	public UUID getid() {
+		return id;
+	}
+
+	public void setid(UUID id) {
+		this.id = UUID.randomUUID();
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	@Override
+	public String toString() {
+		return "CustomerRelationshipModel [randomUUID=" + id + ", firstName=" + firstName + ", lastName="
+				+ lastName + ", email=" + email + "]";
+	}
+
+
+	
+}

@@ -1,0 +1,19 @@
+package com.Student;
+
+public class Main {
+	public static void main(String args[]) {
+		
+		Student s1 = new Student();
+		s1.setName("Ram");
+		
+		Student s2 = new Student();
+		s1.setName("Shyam");	
+		
+		StudentIdCard sc1 = new StudentIdCard();
+		sc1.setSoftwareVersion("1.0.1");
+		
+		StudentIdCard sc2 = new StudentIdCard();
+		sc2.setSoftwareVersion("1.0.2");
+		
+	}
+}

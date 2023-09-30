@@ -1,0 +1,11 @@
+package com.customer.relationship.manager.services;
+
+import org.springframework.stereotype.Service;
+
+import com.customer.relationship.manager.repository.CustomerRelationshipRepository;
+
+@Service
+public class CustomerRelationshipServices {
+
+	CustomerRelationshipRepository customerRelationshipRepository;
+}

@@ -1,0 +1,48 @@
+package in.pw.PreparedStatement;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.util.Scanner;
+
+import in.pw.PreparedQueary.ConnectionDB;
+
+public class UpdateQueary {
+
+	public static void main(String[] args) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null; 
+		connection = ConnectionDB.getJDBCconnection();
+		Scanner s = new Scanner(System.in);
+		
+		try {
+			if(connection != null) {
+				String updateQueary = "update student set result = ? where id = ?";
+				preparedStatement = connection.prepareStatement(updateQueary);
+				
+				if(preparedStatement != null) {
+					System.out.println("Enter the id which you want to update");
+					int id = s.nextInt();
+					System.out.println("Enter the update result");
+					String result = s.next();
+					
+					preparedStatement.setInt(1, id);
+					preparedStatement.setString(2, result);
+					
+					int rowEffected = preparedStatement.executeUpdate();
+					
+					if(rowEffected == 1) {
+						System.out.println("ROW updated");
+					}else {
+						System.out.println("ROW not updated");
+					}
+				}
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionDB.closeResource(connection, preparedStatement);
+		}
+	}
+
+}

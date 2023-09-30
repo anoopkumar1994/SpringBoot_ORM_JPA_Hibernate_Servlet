@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>CRM - Customer Relationship Manager</title>
+</head>
+<body>
+    <header>
+        <h1>CRM - Customer Relationship Manager</h1>
+    </header>
+    <main>
+        <h2>Add Customer</h2>
+        <form th:action="@{/save-customer}" method="post" th:object=$"customerForm">
+            <div class="input-group">
+                <label for="first-name">First Name:</label>
+                <input type="text" id="first-name" name="firstName" required>
+            </div>
+            <div class="input-group">
+                <label for="last-name">Last Name:</label>
+                <input type="text" id="last-name" name="lastName" required>
+            </div>
+            <div class="input-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="button-group">
+                <button type="submit" class="btn save">Save</button>
+                <a th:href="@{/}" class="btn back">Back</a>
+            </div>
+        </form>
+    </main>
+</body>
+</html>

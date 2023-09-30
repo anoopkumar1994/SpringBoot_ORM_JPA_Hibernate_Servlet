@@ -1,0 +1,4 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org">
+	<h1 th:text = "${display}">welcom register form</h1>
+</html>

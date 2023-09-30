@@ -1,0 +1,46 @@
+package in.pw.PreparedStatement;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+import in.pw.PreparedQueary.ConnectionDB;
+
+public class InsertQureay {
+	
+	public static void main(String args[]) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		connection = ConnectionDB.getJDBCconnection();
+		
+		try {
+			if(connection != null) {
+				String mySQLQueary = "insert INTO student(rollno, name, result) values(?, ?, ?)";
+				preparedStatement =connection.prepareStatement(mySQLQueary);
+				
+				if(preparedStatement != null) {
+					
+//					Scanner s = new Scanner();
+					preparedStatement.setInt(1, 123);
+					preparedStatement.setString(2, "Shyam Sundar");
+					preparedStatement.setString(3, "Pass");
+					
+					int rowEffected = preparedStatement.executeUpdate();
+					
+					if(rowEffected == 1) {
+						System.out.println("ROW inserted");
+					}else {
+						System.out.println("ROW not inserted");
+					}
+				}
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			ConnectionDB.closeResource(connection, preparedStatement);
+		}
+	}
+
+}

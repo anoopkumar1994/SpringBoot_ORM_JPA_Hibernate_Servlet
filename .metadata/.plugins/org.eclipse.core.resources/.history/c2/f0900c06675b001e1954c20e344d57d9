@@ -1,0 +1,36 @@
+package com.customer.relationship.manager.controllers;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.customer.relationship.manager.model.CustomerRelationshipModel;
+import com.customer.relationship.manager.services.CustomerRelationshipServices;
+
+@RestController
+public class CustomerRelationshipControllers {
+	
+	@Autowired
+	CustomerRelationshipServices customerRelationshipServices;
+	
+	@GetMapping(path = "/get")
+	public ModelAndView read(CustomerRelationshipModel customerRelationshipModel) {
+		String HomePage =  "Home Page";
+		String viewName1 = "Customer Form Page";
+		Map<String, Object> model = new HashMap<>();
+		model.put("display","anoop");
+		return new ModelAndView(HomePage, model);
+	}
+	
+	@GetMapping(path = "/get-all-list")
+	public ModelAndView readAll(CustomerRelationshipModel customerRelationshipModel) {
+		String formPage = "Customer Form Page";
+		Map<String, Object> model = new HashMap<>();
+		model.put("display","anoop");
+		return new ModelAndView(formPage, model);
+	}
+}

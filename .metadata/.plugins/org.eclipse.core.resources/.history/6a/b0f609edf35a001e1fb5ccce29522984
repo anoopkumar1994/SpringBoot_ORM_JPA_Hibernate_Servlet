@@ -1,0 +1,5 @@
+package com.customer.relationship.manager.repository;
+
+public interface CustomerRelationshipRepository {
+
+}

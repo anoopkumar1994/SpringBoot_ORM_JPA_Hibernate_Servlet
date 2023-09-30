@@ -1,0 +1,30 @@
+package com.example.webApp.controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class GetController {
+	
+	@GetMapping("/")
+	public String getHomePage() {
+		return "Hello Spring Boot";
+	}
+	
+	@GetMapping("/search")
+	public String getHelloWorld() {
+		return "Hello World";
+	}
+	
+	@GetMapping("/searching")
+	public String getSearching(@RequestParam(name = "a") String value) {
+		return value;
+	}
+	
+	@GetMapping("/searchkro/sachin")
+	public String getSearch(@PathVariable(name = "sachin") String value) {
+		return value;
+	}
+}

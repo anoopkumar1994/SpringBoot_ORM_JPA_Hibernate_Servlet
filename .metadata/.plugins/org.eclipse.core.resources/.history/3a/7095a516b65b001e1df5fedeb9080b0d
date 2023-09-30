@@ -1,0 +1,21 @@
+package com.customer.relationship.manager.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.customer.relationship.manager.model.CustomerRelationshipModel;
+import com.customer.relationship.manager.repository.CustomerRelationshipRepository;
+
+@Service
+public class CustomerRelationshipServices {
+	
+	@Autowired
+	CustomerRelationshipRepository customerRepository;
+	
+	public void create(CustomerRelationshipModel customerRelationshipModel) {
+		customerRepository.save(customerRelationshipModel);
+	}
+	private List<CustomerRelationshipModel> getAllCustomerList() {
+		return customerRepository.findAll(customerRelationshipModel);
+	}
+}

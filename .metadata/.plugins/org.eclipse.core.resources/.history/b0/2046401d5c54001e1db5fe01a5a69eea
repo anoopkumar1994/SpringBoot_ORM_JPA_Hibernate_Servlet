@@ -1,0 +1,25 @@
+package com.hibernetDemo.HibernateDemo;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+
+public class App 
+{
+    public static void main( String[] args )
+    {
+        Student st = new Student();
+        st.setId(1);
+        st.setName("Shyam");
+        st.setRollNo(10);
+        st.setMarks(150);
+        
+        Configuration config = new Configuration().configure().addAnnotatedClass(Student.class);
+        SessionFactory sessionfactory = config.buildSessionFactory();
+        Session session = sessionfactory.openSession();
+        session.save(st);
+        
+        System.out.println(st);
+    } 
+}

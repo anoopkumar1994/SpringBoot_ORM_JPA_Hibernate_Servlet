@@ -1,0 +1,32 @@
+package com.Student;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class StudentIdCard {
+	
+	@Id
+	private int idCard;
+	private String softwareVersion;
+	
+	
+	public int getIdCard() {
+		return idCard;
+	}
+	public void setIdCard(int idCard) {
+		this.idCard = idCard;
+	}
+	public String getSoftwareVersion() {
+		return softwareVersion;
+	}
+	public void setSoftwareVersion(String softwareVersion) {
+		this.softwareVersion = softwareVersion;
+	}
+	
+	
+	
+	
+	
+
+}

@@ -1,0 +1,11 @@
+package com.customer.relationship.manager.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.customer.relationship.manager.model.CustomerRelationshipModel;
+
+@Repository
+public interface CustomerRelationshipRepository  extends JpaRepository<CustomerRelationshipModel, String>{
+
+}

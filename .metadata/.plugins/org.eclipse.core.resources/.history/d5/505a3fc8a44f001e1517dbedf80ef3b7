@@ -1,0 +1,12 @@
+package in.pw.PreparedStatement;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+public class SelectQueary {
+	Connection connection = null;
+	PreparedStatement preparedStatement = null;
+	ResultSet resultSte = null;
+	connection = ConnectionDB.getConnection();
+}

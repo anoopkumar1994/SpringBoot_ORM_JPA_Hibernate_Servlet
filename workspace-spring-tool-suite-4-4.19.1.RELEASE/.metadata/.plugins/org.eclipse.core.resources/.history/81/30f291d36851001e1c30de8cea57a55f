@@ -1,0 +1,13 @@
+package com.JPAApplaction;
+
+public class PokedexInitiator {
+
+	public static void main(String[] args) {
+		Pokemon p = new Pokemon();
+		p.setName("Pikachu");
+		p.setType("Electro type");
+		p.setPower("100");
+
+	}
+
+}

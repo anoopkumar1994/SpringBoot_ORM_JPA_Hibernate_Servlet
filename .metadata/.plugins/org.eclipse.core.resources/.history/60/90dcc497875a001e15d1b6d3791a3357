@@ -1,0 +1,39 @@
+package com.example.webAppspringcrud.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.webAppspringcrud.model.MarvelHeroesSchema;
+import com.example.webAppspringcrud.repositoryes.SuperHeroCharactorRepository;
+
+@Service
+public class CRUDService {
+
+	@Autowired
+	SuperHeroCharactorRepository superHeroCharactorRepository; // connect repository file
+	
+	//Create (service/Business Logic)
+	public void createSuperhero(MarvelHeroesSchema marvelHeroesSchema) {
+		superHeroCharactorRepository.save(marvelHeroesSchema);
+	}
+
+	// Read (service/Business Logic)
+	public MarvelHeroesSchema readSuperHeroById(int val) {
+		
+		return superHeroCharactorRepository.findById(val).get();
+	}
+	// Update (service/Business Logic)
+	public void updateSuperHero(MarvelHeroesSchema marvelHeroesSchema, int id) {
+		
+		MarvelHeroesSchema superHeroNameUpdate = readSuperHeroById(id); // read method calling
+		superHeroNameUpdate.setHumanName(marvelHeroesSchema.getHumanName());
+		superHeroCharactorRepository.save(superHeroNameUpdate);
+	}
+
+	public void deleteSuperHeroes(int id) {
+		
+//		MarvelHeroesSchema supderHeroDelete = readSuperHeroById(id);
+		superHeroCharactorRepository.deleteById(id);
+		
+	}
+}

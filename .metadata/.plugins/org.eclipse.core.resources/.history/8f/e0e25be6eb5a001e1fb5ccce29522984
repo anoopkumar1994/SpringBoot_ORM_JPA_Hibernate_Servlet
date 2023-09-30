@@ -1,0 +1,5 @@
+package com.customer.relationship.manager.model;
+
+public class CustomerRelationshipModel {
+
+}

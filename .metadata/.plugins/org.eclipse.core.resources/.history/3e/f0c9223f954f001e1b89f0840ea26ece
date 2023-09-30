@@ -1,0 +1,9 @@
+package in.pw.PreparedStatement;
+
+import java.sql.Connection;
+
+public class SelectQueary {
+	Connection connection = null;
+	PreapreadStatement 
+
+}

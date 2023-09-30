@@ -1,0 +1,45 @@
+package com.customer.relationship.manager.services;
+
+import java.util.List;
+import java.util.UUID;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.customer.relationship.manager.model.CustomerRelationshipModel;
+import com.customer.relationship.manager.repository.CustomerRelationshipRepository;
+
+import jakarta.persistence.EntityNotFoundException;
+
+@Service
+public class CustomerRelationshipServices {
+	
+	@Autowired
+	CustomerRelationshipRepository customerRepository;
+	
+	public void create(CustomerRelationshipModel customerRelationshipModel) {
+		customerRepository.save(customerRelationshipModel);
+	}
+	public List<CustomerRelationshipModel> getAllCustomerList() {
+		return customerRepository.findAll();
+	}
+	
+	public CustomerRelationshipModel getListById(UUID id) {
+		return customerRepository.findById(id).get();
+	}
+	
+	public void update(CustomerRelationshipModel updatedCustomer) {
+        // Check if the customer exists in the database
+        CustomerRelationshipModel existingCustomer = customerRepository.findById(updatedCustomer.getid())
+                .orElseThrow(() -> new EntityNotFoundException("Customer not found"));
+
+        // Update the customer's information
+        existingCustomer.setFirstName(updatedCustomer.getFirstName());
+        existingCustomer.setLastName(updatedCustomer.getLastName());
+        existingCustomer.setEmail(updatedCustomer.getEmail());
+
+        // Save the updated customer
+        customerRepository.save(existingCustomer);
+    }
+	
+}

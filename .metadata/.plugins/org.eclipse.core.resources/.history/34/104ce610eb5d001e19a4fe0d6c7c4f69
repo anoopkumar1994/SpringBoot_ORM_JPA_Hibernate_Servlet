@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>CRM - Customer Relationship Manager</title>
+</head>
+<body>
+    <header>
+        <h1>CRM - Customer Relationship Manager</h1>
+        <a th:href="@{/customerform}" class="btn add-customer">Add Customer</a>
+    </header>
+    <main>
+        <h2>Customer List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Use standard HTML iteration to display customer information -->
+                <tr th:each ="customerrows:${customerlistrows}">
+                  	<td th:text="${customerrows.firstName}">John</td>
+                    <td th:text="${customerrows.lastName}">Doe</td>
+                    <td th:text="${customerrows.email}">johndoe@example.com</td>
+                    <td>
+                      <a href="/update/customerid" class="btn update" th:href="@{/customerform/(id=${customerrows.id})}" >Update</a> 
+                          <!-- <a href="/customerform.html" th:href="@{'/customerform/' + ${customerrows.id}}" class="btn update">Update</a> -->
+                        <a href="@{/deletecustomerlist/{id}(id=${customerrows.id})}" class="btn delete">Delete</a>
+     
+                       <!--<a href="/delete/customer-id" class="btn delete">Delete</a> -->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>
+

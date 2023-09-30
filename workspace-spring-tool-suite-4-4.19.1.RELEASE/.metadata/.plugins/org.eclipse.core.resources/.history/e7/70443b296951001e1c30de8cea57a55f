@@ -1,0 +1,18 @@
+package com.JPAApplaction;
+
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+public class PokedexInitiator {
+
+	public static void main(String[] args) {
+		Pokemon p = new Pokemon();
+		p.setName("Pikachu");
+		p.setType("Electro type");
+		p.setPower("100");
+		
+		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("anoop");
+
+	}
+
+}
